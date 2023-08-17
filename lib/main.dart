@@ -90,11 +90,24 @@ class MyApp extends StatelessWidget {
           routes: <RouteBase>[
             GoRoute(
               path: "signUpPage",
-              builder: (context, GoRouterState state) => BlocProvider(
-                create: (context) => AuthCubit(),
+              builder: (context, GoRouterState state) => MultiBlocProvider(
+                providers: [
+                  BlocProvider(
+                    create: (context) => AuthCubit(),
+                  ),
+                  BlocProvider(
+                    create: (context) =>
+                        NoteCubit(noteRepository: _noteRepo)..getNotes(),
+                  ),
+                ],
                 child: BlocBuilder<AuthCubit, AuthState>(
                   builder: (context, state) {
-                    return signUpPage();
+                    if (!(state is AuthAuthenticated || state is AuthLoading)) {
+                      return signUpPage();
+                    } else if (state is AuthLoading) {
+                      return LoadingScreen();
+                    } else
+                      return NotesHomeScreen();
                   },
                 ),
               ),
