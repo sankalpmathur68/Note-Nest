@@ -34,108 +34,116 @@ class signUpPage extends StatelessWidget {
         return Scaffold(
           backgroundColor: Colors.white,
           // appBar: AppBar(title: Text('Sign Up')),
-          body: Transform(
-            transform: Matrix4.rotationX(0.1),
-            alignment: Alignment.center,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(16),
-              child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                child: Container(
-                  padding: EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.2),
-                    borderRadius: BorderRadius.circular(16),
-                    border: Border.all(
-                      color: Colors.white.withOpacity(0.5),
-                      width: 1,
+          body: SingleChildScrollView(
+            child: Transform(
+              transform: Matrix4.rotationX(0.1),
+              alignment: Alignment.center,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                  child: Container(
+                    padding: EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.2),
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(
+                        color: Colors.white.withOpacity(0.5),
+                        width: 1,
+                      ),
                     ),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    // crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Create Account",
-                              style: GoogleFonts.lato(fontSize: 50),
-                            ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            TextField(
-                              controller: emailController,
-                              decoration: InputDecoration(
-                                labelText: 'Email',
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(90),
-                                ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      // crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                height: 50,
                               ),
-                            ),
-                            SizedBox(height: 10),
-                            TextField(
-                              controller: passwordController,
-                              obscureText: true,
-                              decoration: InputDecoration(
-                                labelText: 'Password',
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(90),
-                                ),
+                              Image.asset("assets/logo_.png"),
+                              Text(
+                                "Create Account",
+                                style: GoogleFonts.lato(fontSize: 50),
                               ),
-                            ),
-                            SizedBox(height: 10),
-                            TextField(
-                              controller: confirmPasswordController,
-                              obscureText: true,
-                              decoration: InputDecoration(
-                                labelText: 'Confirm Password',
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(90),
-                                ),
+                              SizedBox(
+                                height: 20,
                               ),
-                            ),
-                            SizedBox(height: 20),
-                            Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.blue.shade100,
-                                  // border: Border.all(),
-                                  borderRadius: BorderRadius.circular(90)),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.stretch,
-                                children: [
-                                  TextButton(
-                                    onPressed: () {
-                                      final email = emailController.text;
-                                      final password = passwordController.text;
-                                      final confirmPassword =
-                                          confirmPasswordController.text;
-                                      if (true) {
-                                        context
-                                            .read<AuthCubit>()
-                                            .signUpWithEmailAndPassword(
-                                                email, password);
-                                      } else {
-                                        // Show error message for password mismatch
-                                      }
-                                    },
-                                    style: ButtonStyle(),
-                                    child: Text(
-                                      "Create Acoount",
-                                      style: GoogleFonts.lato(
-                                          color: Colors.black, fontSize: 20),
-                                    ),
+                              TextField(
+                                controller: emailController,
+                                decoration: InputDecoration(
+                                  labelText: 'Email',
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(90),
                                   ),
-                                ],
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
+                              SizedBox(height: 10),
+                              TextField(
+                                controller: passwordController,
+                                obscureText: true,
+                                decoration: InputDecoration(
+                                  labelText: 'Password',
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(90),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(height: 10),
+                              TextField(
+                                controller: confirmPasswordController,
+                                obscureText: true,
+                                decoration: InputDecoration(
+                                  labelText: 'Confirm Password',
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(90),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(height: 20),
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.blue.shade100,
+                                    // border: Border.all(),
+                                    borderRadius: BorderRadius.circular(90)),
+                                child: Column(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.stretch,
+                                  children: [
+                                    TextButton(
+                                      onPressed: () {
+                                        final email = emailController.text;
+                                        final password =
+                                            passwordController.text;
+                                        final confirmPassword =
+                                            confirmPasswordController.text;
+                                        if (true) {
+                                          context
+                                              .read<AuthCubit>()
+                                              .signUpWithEmailAndPassword(
+                                                  email, password);
+                                        } else {
+                                          // Show error message for password mismatch
+                                        }
+                                      },
+                                      style: ButtonStyle(),
+                                      child: Text(
+                                        "Create Acoount",
+                                        style: GoogleFonts.lato(
+                                            color: Colors.black, fontSize: 20),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),

@@ -47,6 +47,7 @@ class loginPage extends StatelessWidget {
               ),
               TextField(
                 controller: _passwordController,
+                obscureText: true,
                 decoration: InputDecoration(
                   label: Text("Password"),
                   border: OutlineInputBorder(
