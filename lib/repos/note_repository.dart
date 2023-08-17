@@ -5,6 +5,7 @@ import '../screens/home_screen.dart';
 
 final _auth = FirebaseAuth.instance;
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+final settings = _firestore.settings.copyWith(persistenceEnabled: false);
 
 class NoteRepository {
   Future<List<Note>> getNotes() async {

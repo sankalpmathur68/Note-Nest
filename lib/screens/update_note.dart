@@ -46,6 +46,55 @@ class UpdateNotes extends StatelessWidget {
         backgroundColor: Colors.blue.shade100,
         elevation: 0.0,
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(mainAxisAlignment: MainAxisAlignment.end, children: [
+          Container(
+            decoration: BoxDecoration(
+                color: Colors.blue.shade100,
+                // border: Border.all(),
+                borderRadius: BorderRadius.circular(90)),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                TextButton(
+                  onPressed: () {
+                    _saveNote(note.id, note.title);
+                  },
+                  style: ButtonStyle(),
+                  child: Text(
+                    "Update Note",
+                    style: GoogleFonts.lato(color: Colors.black, fontSize: 20),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: 10),
+          Container(
+            decoration: BoxDecoration(
+                color: Colors.red.shade100,
+                // border: Border.all(),
+                borderRadius: BorderRadius.circular(90)),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                TextButton(
+                  onPressed: () {
+                    BlocProvider.of<NoteCubit>(context).getNotes();
+                  },
+                  style: ButtonStyle(),
+                  child: Text(
+                    "Cancle",
+                    style: GoogleFonts.lato(color: Colors.black, fontSize: 20),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ]),
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
@@ -87,52 +136,6 @@ class UpdateNotes extends StatelessWidget {
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10)),
                   )),
-              SizedBox(height: 16),
-              Container(
-                decoration: BoxDecoration(
-                    color: Colors.blue.shade100,
-                    // border: Border.all(),
-                    borderRadius: BorderRadius.circular(90)),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    TextButton(
-                      onPressed: () {
-                        _saveNote(note.id, note.title);
-                      },
-                      style: ButtonStyle(),
-                      child: Text(
-                        "Update Note",
-                        style:
-                            GoogleFonts.lato(color: Colors.black, fontSize: 20),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: 10),
-              Container(
-                decoration: BoxDecoration(
-                    color: Colors.red.shade100,
-                    // border: Border.all(),
-                    borderRadius: BorderRadius.circular(90)),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    TextButton(
-                      onPressed: () {
-                        BlocProvider.of<NoteCubit>(context).getNotes();
-                      },
-                      style: ButtonStyle(),
-                      child: Text(
-                        "Cancle",
-                        style:
-                            GoogleFonts.lato(color: Colors.black, fontSize: 20),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
             ],
           ),
         ),

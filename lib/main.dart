@@ -17,6 +17,8 @@ import 'package:scicalci/screens/loadingScreen.dart';
 import 'package:scicalci/screens/loginPage.dart';
 import 'package:scicalci/screens/signUpPage.dart';
 import 'package:scicalci/screens/update_note.dart';
+import 'package:scicalci/screens/wavyNatureText.dart';
+import 'package:scicalci/screens/wavywatertext.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
